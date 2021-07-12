@@ -75,10 +75,16 @@ document.addEventListener('DOMContentLoaded', () => {
         const cards = document.querySelectorAll('img')
         const choiceOneId = cardsChosenId[0]
         const choiceTwoId = cardsChosenId[1]
-        if(cardsChosen[0] === cardsChosen[1]){
+        if(choiceOneId === choiceTwoId){
+            alert('You chose the same card!')
+            cards[choiceOneId].setAttribute('src','images/random.jpeg')
+            cards[choiceTwoId].setAttribute('src','images/random.jpeg')
+        }else if(cardsChosen[0] === cardsChosen[1]){
             alert('It\'s a match!')
             cards[choiceOneId].setAttribute('src', 'images/blank.png')
             cards[choiceTwoId].setAttribute('src', 'images/blank.png')
+            cards[choiceOneId].removeEventListener('click', flipCard)
+            cards[choiceTwoId].removeEventListener('click', flipCard)
             cardsWon.push(cardsChosen)
         }else{
             cards[choiceOneId].setAttribute('src','images/random.jpeg')
